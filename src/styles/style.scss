@@ -1,0 +1,251 @@
+@font-face {
+    font-family: "Avenir Black";
+    src: url(../assets/fonts/avenir/Avenir-Black.ttf);
+}
+
+@font-face {
+    font-family: "Avenir Book";
+    src: url(../assets/fonts/avenir/Avenir-Book.ttf);
+}
+
+@font-face {
+    font-family: "Avenir Heavy";
+    src: url(../assets/fonts/avenir/Avenir-Heavy.ttf);
+}
+
+@font-face {
+    font-family: "Avenir Light";
+    src: url(../assets/fonts/avenir/Avenir-Light.ttf);
+}
+
+@font-face {
+    font-family: "Avenir Medium";
+    src: url(../assets/fonts/avenir/Avenir-Medium.ttf);
+}
+
+body, html {
+    font-family: "Avenir Heavy", sans-serif;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#content {
+    margin: 20px;
+
+    h2 {
+        margin-bottom: 0px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: -55px;
+
+        h3 {
+            margin-right: 5px;
+        }
+
+        #sign-out-button {
+            margin-top: 15px;
+            margin-left: 20px;
+            padding: 5px 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            height: 23px;
+
+            p {
+                margin: 0px;
+            }
+        }
+
+        #sign-out-button:hover {
+            background-color: lightgrey;
+            border-color: lightgrey;
+            cursor: pointer;
+        }
+    }
+
+    #current-user-area {
+        background-color: lightgrey;
+        width: 350px;
+        padding: 0px 15px;
+        border-radius: 5px;
+
+        h3 {
+            padding-top: 10px;
+        }
+
+        #user-data-area {
+            margin-top: -10px;
+            padding-bottom: 10px;
+
+            p {
+                font-family: "Avenir Medium";
+                margin: 5px 0px;
+            }
+        }  
+    }
+
+    #current-user-area:hover {
+        cursor: pointer;
+    }
+
+    #email-area {
+        p {
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 150px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 0;
+            background-color: lightgrey;
+        }    
+        
+        button {
+            margin-top: 20px;
+            width: 90px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 0;
+            text-align: center;
+            background-color: lightgrey;
+            font-size: 18px;
+            font-family: "Avenir Heavy";
+        }
+
+        #sign-in-button:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    #all-users-area {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+
+          td {
+              font-family: "Avenir Medium";
+          }
+
+          td:hover {
+              cursor: pointer;
+          }
+          
+          tr:nth-child(even) {
+            background-color: #dddddd;
+          }
+    }
+
+    #create-employee-button {
+        margin-left: 5px;
+        margin-top: 25px;
+        font-family: "Avenir Heavy";
+        font-size: 16px;
+        border: 0px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: lightgrey;
+        margin-right: 10px;
+    }
+
+    #create-employee-button:hover {
+        cursor: pointer;
+    }
+}
+
+#update-user-area {
+    margin-bottom: 10px;
+
+    .field-area {
+        font-family: "Avenir Medium";
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        p {
+            margin-right: 10px;
+            width: 90px;
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 2px 5px;
+            height: 20px;
+            width: 150px;
+            border-radius: 5px;
+            border: 0px;
+            background-color: lightgrey;
+            margin-top: -12px;
+        }
+    }
+
+    .checkbox-area {
+        margin-bottom: 20px;
+
+        span {
+            font-family: "Avenir Medium";
+            margin-left: 5px;
+        }
+    }
+
+    #button-area {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        button {
+            font-family: "Avenir Heavy";
+            font-size: 16px;
+            border: 0px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background-color: lightgrey;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.Modal {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.Modal:focus {
+    outline: none;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: (#000000), $alpha: 0.5);
+}
