@@ -40,31 +40,56 @@ body, html {
     header {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
-        margin-top: -55px;
+        justify-content: space-between;
 
-        h3 {
-            margin-right: 5px;
-        }
+        #auth-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
 
-        #sign-out-button {
-            margin-top: 15px;
-            margin-left: 20px;
-            padding: 5px 10px;
-            border: 1px solid grey;
-            border-radius: 5px;
-            height: 23px;
-
-            p {
-                margin: 0px;
+            h3 {
+                margin-right: 5px;
+            }
+    
+            #nav-header-button {
+                margin-top: 15px;
+                margin-left: 20px;
+                padding: 5px 10px;
+                border: 1px solid grey;
+                border-radius: 5px;
+                height: 23px;
+    
+                p {
+                    margin: 0px;
+                }
+            }
+    
+            #nav-header-button:hover {
+                background-color: lightgrey;
+                border-color: lightgrey;
+                cursor: pointer;
             }
         }
 
-        #sign-out-button:hover {
-            background-color: lightgrey;
-            border-color: lightgrey;
-            cursor: pointer;
+        a {
+            text-decoration: none;
+            color: black;
         }
+    }
+
+    .button {
+        background-color: lightgrey;
+        width: 75px;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: 0.2s;
+    }
+
+    .button:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.35);
     }
 
     #current-user-area {

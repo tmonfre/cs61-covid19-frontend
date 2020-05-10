@@ -1,12 +1,13 @@
 import axios from 'axios';
+import { API_URL } from '../constants';
 
-const URL = 'http://localhost:3000/api/employees';
+const URL = `${API_URL}/users`;
 
 /**
- * retrieve all employee objects in the database
+ * retrieve all user objects in the database
  * @param {string} token auth token
  */
-const getAllEmployees = (token) => {
+const getAllUsers = (token) => {
   return new Promise((resolve, reject) => {
     axios.get(URL, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
@@ -19,11 +20,11 @@ const getAllEmployees = (token) => {
 };
 
 /**
- * retrieve single employee object by username
+ * retrieve single user object by username
  * @param {string} token auth token
  * @param {string} username username to retrieve
  */
-const getEmployeeByUsername = (token, username) => {
+const getUser = (token, username) => {
   return new Promise((resolve, reject) => {
     axios.get(`${URL}/${username}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
@@ -36,29 +37,12 @@ const getEmployeeByUsername = (token, username) => {
 };
 
 /**
- * create employee object in the database
- * @param {string} token auth token
- * @param {object} fields values for the new employee
- */
-const createEmployee = (token, fields) => {
-  return new Promise((resolve, reject) => {
-    axios.post(URL, fields, { headers: { Authorization: `Bearer ${token}` } })
-      .then((response) => {
-        resolve(response.data.response);
-      })
-      .catch((error) => {
-        reject(error.response.data);
-      });
-  });
-};
-
-/**
- * update employee object by username
+ * update user object by username
  * @param {string} token auth token
  * @param {string} username the username to update in the database
- * @param {object} fields values to change for the employee
+ * @param {object} fields values to change for the user
  */
-const updateEmployee = (token, username, fields) => {
+const updateUser = (token, username, fields) => {
   return new Promise((resolve, reject) => {
     axios.put(`${URL}/${username}`, fields, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
@@ -71,11 +55,11 @@ const updateEmployee = (token, username, fields) => {
 };
 
 /**
- * delete employee object by username
+ * delete user object by username
  * @param {string} token auth token
  * @param {string} username the username to delete in the database
  */
-const deleteEmployee = (token, username) => {
+const deleteUser = (token, username) => {
   return new Promise((resolve, reject) => {
     axios.delete(`${URL}/${username}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
@@ -88,9 +72,8 @@ const deleteEmployee = (token, username) => {
 };
 
 export {
-  getAllEmployees,
-  getEmployeeByUsername,
-  createEmployee,
-  updateEmployee,
-  deleteEmployee,
+  getAllUsers,
+  getUser,
+  updateUser,
+  deleteUser,
 };
