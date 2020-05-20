@@ -12,7 +12,7 @@ const getCountry = () => {
   return (dispatch) => {
     countryRequest.getCountryCount()
       .then((response) => {
-        dispatch({ type: ActionTypes.GET_COUNTRY_DATA_OVER_TIME, payload: response });
+        dispatch({ type: ActionTypes.GET_COUNTRY_DATA_OVER_TIME, payload: { data: response, stateName: '' } });
       })
       .catch((error) => {
         dispatch({ type: ActionTypes.API_ERROR, payload: error });
@@ -23,7 +23,7 @@ const getState = (state) => {
   return (dispatch) => {
     countryRequest.getStateCount(state)
       .then((response) => {
-        dispatch({ type: ActionTypes.GET_STATE_DATA_OVER_TIME, payload: response });
+        dispatch({ type: ActionTypes.GET_STATE_DATA_OVER_TIME, payload: { data: response, stateName: state } });
       })
       .catch((error) => {
         dispatch({ type: ActionTypes.API_ERROR, payload: error });

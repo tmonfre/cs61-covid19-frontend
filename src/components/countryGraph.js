@@ -6,18 +6,19 @@ import { getCountry, getState } from '../state/actions';
 
 class CountryGraph extends React.Component {
   componentDidMount() {
-    if (this.props.type === 'country') {
-      this.props.getCountry();
-    } else if (this.props.type === 'state') {
-      this.props.getState(this.props.state);
-    }
+    this.retrieveData();
   }
 
+    retrieveData = () => {
+      if (this.props.type === 'country') {
+        this.props.getCountry();
+      } else if (this.props.type === 'state') {
+        this.props.getState(this.props.state);
+      }
+    }
+
     handleData = (d) => {
-      console.log(this.props.type);
       const data = this.props.type === 'country' ? this.props.countryData : this.props.stateData;
-      console.log(this.props.countryData);
-      console.log(data);
       data.forEach((day) => {
         d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
         d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
@@ -25,8 +26,11 @@ class CountryGraph extends React.Component {
       });
     }
 
-
     render() {
+      console.log(this.props.state);
+      console.log(this.props.reduxStateName);
+
+      if (this.props.type === 'state' && this.props.state !== this.props.reduxStateName) this.retrieveData();
       const d = {
         labels: [],
         datasets: [
@@ -50,7 +54,6 @@ class CountryGraph extends React.Component {
           },
         ],
       };
-      console.log(d);
       this.handleData(d);
       return (
         <div id="countrygraph">
@@ -74,10 +77,10 @@ class CountryGraph extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.counts);
   return {
     countryData: state.counts.countryData,
     stateData: state.counts.stateData,
+    reduxStateName: state.counts.stateName,
   };
 };
 
