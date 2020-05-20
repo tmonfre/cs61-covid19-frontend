@@ -6,7 +6,7 @@ const URL = `${API_URL}/counts`;
 /**
  * gets the data for the country line graph
  */
-const getCountryCounts = () => {
+const getCountryCount = () => {
   return new Promise((resolve, reject) => {
     axios.get(`${URL}/country`)
       .then((response) => {
@@ -20,11 +20,11 @@ const getCountryCounts = () => {
 /**
  * gets all of the state data if we want that?
  */
-const getStateCounts = () => {
+const getStateCount = (state) => {
   return new Promise((resolve, reject) => {
-    axios.get(`${URL}/states`)
+    axios.get(`${URL}/states/${state}`)
       .then((response) => {
-        resolve(response);
+        resolve(response.data.response);
       })
       .catch((error) => {
         reject(error.response.data);
@@ -33,6 +33,6 @@ const getStateCounts = () => {
 };
 
 export {
-  getCountryCounts,
-  getStateCounts,
+  getCountryCount,
+  getStateCount,
 };

@@ -95,7 +95,7 @@ class Home extends React.Component {
       <Fade>
         <div id="home">
           <div id="chartdiv" />
-          <CountryGraph />
+          <CountryGraph type="country" />
           <State statename={this.props.match.params.statename} />
         </div>
       </Fade>

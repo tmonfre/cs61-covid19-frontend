@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-import { getCountries } from '../state/actions';
+import { getCountry, getState } from '../state/actions';
 
 
 class CountryGraph extends React.Component {
@@ -30,11 +30,18 @@ class CountryGraph extends React.Component {
     };
 
     componentDidMount() {
-      this.props.getCountries();
+      if (this.props.type === 'country') {
+        this.props.getCountry();
+      } else if (this.props.type === 'state') {
+        this.props.getState(this.props.state);
+      }
     }
 
     handleData = () => {
-      this.props.data.forEach((day) => {
+      console.log(this.props.type);
+      const data = this.props.type === 'country' ? this.props.countryData : this.props.stateData;
+      console.log(data);
+      data.forEach((day) => {
         this.d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
         this.d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
         this.d.datasets[1].data.push(parseInt(day.DeathCountSum, 10));
@@ -43,17 +50,16 @@ class CountryGraph extends React.Component {
 
 
     render() {
-      this.handleData();
       console.log(this.d);
+      this.handleData();
       return (
-        <div id="chartdiv">
-
+        <div id="countrygraph">
           <Line
             data={this.d}
             options={{
               title: {
                 display: true,
-                text: 'Total US Cases and Deaths over time',
+                text: `${this.props.state === undefined ? 'US' : this.props.state} Cases and Deaths over time`,
                 fontSize: 20,
               },
               legend: {
@@ -68,15 +74,20 @@ class CountryGraph extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.counts);
   return {
-    data: state.country.casesOverTime,
+    countryData: state.counts.countryData,
+    stateData: state.counts.stateData,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCountries: () => {
-      dispatch(getCountries());
+    getCountry: () => {
+      dispatch(getCountry());
+    },
+    getState: (state) => {
+      dispatch(getState(state));
     },
   };
 };
