@@ -8,6 +8,7 @@ import am4geodataUSLow from '@amcharts/amcharts4-geodata/usaTerritories2Low';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import State from './state';
+import CountryGraph from './countryGraph';
 
 import '../styles/home.scss';
 
@@ -21,6 +22,7 @@ stateData.forEach((state) => {
   state.id = stateAbbreviations[state.StateName];
   state.value = state.CaseCountSum;
 });
+
 
 class Home extends React.Component {
   componentDidMount() {
@@ -73,6 +75,7 @@ class Home extends React.Component {
     this.map = map;
   }
 
+
   componentWillUnmount() {
     if (this.map) {
       this.map.dispose();
@@ -86,11 +89,13 @@ class Home extends React.Component {
     this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
   }
 
+
   render() {
     return (
       <Fade>
         <div id="home">
           <div id="chartdiv" />
+          <CountryGraph type="country" />
           <State statename={this.props.match.params.statename} />
         </div>
       </Fade>

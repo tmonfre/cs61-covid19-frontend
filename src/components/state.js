@@ -5,6 +5,7 @@ import * as am4maps from '@amcharts/amcharts4/maps';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import getStateMapData from '../constants/state-map-objects';
+import CountryGraph from './countryGraph';
 
 am4core.useTheme(am4themesDataVis);
 am4core.useTheme(am4themesAnimated);
@@ -49,6 +50,7 @@ export default (props) => {
       <div id="state">
         <h2>{props.statename}</h2>
         <div id="statechartdiv" />
+        <CountryGraph type="state" state={props.statename} />
       </div>
     );
   } else return null;
