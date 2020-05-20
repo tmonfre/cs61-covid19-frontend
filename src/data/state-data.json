@@ -1,0 +1,277 @@
+[
+	{
+		"StateName" : "Alabama",
+		"CaseCountSum" : 7888,
+		"DeathCountSum" : 290
+	},
+	{
+		"StateName" : "Alaska",
+		"CaseCountSum" : 367,
+		"DeathCountSum" : 7
+	},
+	{
+		"StateName" : "Arizona",
+		"CaseCountSum" : 8640,
+		"DeathCountSum" : 363
+	},
+	{
+		"StateName" : "Arkansas",
+		"CaseCountSum" : 3431,
+		"DeathCountSum" : 76
+	},
+	{
+		"StateName" : "California",
+		"CaseCountSum" : 55075,
+		"DeathCountSum" : 2235
+	},
+	{
+		"StateName" : "Colorado",
+		"CaseCountSum" : 16527,
+		"DeathCountSum" : 840
+	},
+	{
+		"StateName" : "Connecticut",
+		"CaseCountSum" : 29287,
+		"DeathCountSum" : 2436
+	},
+	{
+		"StateName" : "Delaware",
+		"CaseCountSum" : 5208,
+		"DeathCountSum" : 177
+	},
+	{
+		"StateName" : "District of Columbia",
+		"CaseCountSum" : 5016,
+		"DeathCountSum" : 251
+	},
+	{
+		"StateName" : "Florida",
+		"CaseCountSum" : 36070,
+		"DeathCountSum" : 1378
+	},
+	{
+		"StateName" : "Georgia",
+		"CaseCountSum" : 27618,
+		"DeathCountSum" : 1168
+	},
+	{
+		"StateName" : "Guam",
+		"CaseCountSum" : 1118,
+		"DeathCountSum" : 6
+	},
+	{
+		"StateName" : "Hawaii",
+		"CaseCountSum" : 616,
+		"DeathCountSum" : 17
+	},
+	{
+		"StateName" : "Idaho",
+		"CaseCountSum" : 2062,
+		"DeathCountSum" : 64
+	},
+	{
+		"StateName" : "Illinois",
+		"CaseCountSum" : 61499,
+		"DeathCountSum" : 2632
+	},
+	{
+		"StateName" : "Indiana",
+		"CaseCountSum" : 20269,
+		"DeathCountSum" : 1246
+	},
+	{
+		"StateName" : "Iowa",
+		"CaseCountSum" : 8747,
+		"DeathCountSum" : 179
+	},
+	{
+		"StateName" : "Kansas",
+		"CaseCountSum" : 4863,
+		"DeathCountSum" : 141
+	},
+	{
+		"StateName" : "Kentucky",
+		"CaseCountSum" : 4919,
+		"DeathCountSum" : 252
+	},
+	{
+		"StateName" : "Louisiana",
+		"CaseCountSum" : 29140,
+		"DeathCountSum" : 1950
+	},
+	{
+		"StateName" : "Maine",
+		"CaseCountSum" : 1153,
+		"DeathCountSum" : 56
+	},
+	{
+		"StateName" : "Maryland",
+		"CaseCountSum" : 24568,
+		"DeathCountSum" : 1251
+	},
+	{
+		"StateName" : "Massachusetts",
+		"CaseCountSum" : 66263,
+		"DeathCountSum" : 3847
+	},
+	{
+		"StateName" : "Michigan",
+		"CaseCountSum" : 43191,
+		"DeathCountSum" : 4020
+	},
+	{
+		"StateName" : "Minnesota",
+		"CaseCountSum" : 6228,
+		"DeathCountSum" : 395
+	},
+	{
+		"StateName" : "Mississippi",
+		"CaseCountSum" : 7445,
+		"DeathCountSum" : 291
+	},
+	{
+		"StateName" : "Missouri",
+		"CaseCountSum" : 8154,
+		"DeathCountSum" : 373
+	},
+	{
+		"StateName" : "Montana",
+		"CaseCountSum" : 454,
+		"DeathCountSum" : 16
+	},
+	{
+		"StateName" : "Nebraska",
+		"CaseCountSum" : 5358,
+		"DeathCountSum" : 76
+	},
+	{
+		"StateName" : "Nevada",
+		"CaseCountSum" : 5390,
+		"DeathCountSum" : 257
+	},
+	{
+		"StateName" : "New Hampshire",
+		"CaseCountSum" : 2429,
+		"DeathCountSum" : 84
+	},
+	{
+		"StateName" : "New Jersey",
+		"CaseCountSum" : 123717,
+		"DeathCountSum" : 7742
+	},
+	{
+		"StateName" : "New Mexico",
+		"CaseCountSum" : 3732,
+		"DeathCountSum" : 139
+	},
+	{
+		"StateName" : "New York",
+		"CaseCountSum" : 318134,
+		"DeathCountSum" : 25205
+	},
+	{
+		"StateName" : "North Carolina",
+		"CaseCountSum" : 11514,
+		"DeathCountSum" : 428
+	},
+	{
+		"StateName" : "North Dakota",
+		"CaseCountSum" : 1154,
+		"DeathCountSum" : 24
+	},
+	{
+		"StateName" : "Northern Mariana Islands",
+		"CaseCountSum" : 14,
+		"DeathCountSum" : 2
+	},
+	{
+		"StateName" : "Ohio",
+		"CaseCountSum" : 19336,
+		"DeathCountSum" : 1021
+	},
+	{
+		"StateName" : "Oklahoma",
+		"CaseCountSum" : 3851,
+		"DeathCountSum" : 238
+	},
+	{
+		"StateName" : "Oregon",
+		"CaseCountSum" : 2635,
+		"DeathCountSum" : 109
+	},
+	{
+		"StateName" : "Pennsylvania",
+		"CaseCountSum" : 51071,
+		"DeathCountSum" : 2795
+	},
+	{
+		"StateName" : "Puerto Rico",
+		"CaseCountSum" : 1755,
+		"DeathCountSum" : 95
+	},
+	{
+		"StateName" : "Rhode Island",
+		"CaseCountSum" : 9289,
+		"DeathCountSum" : 296
+	},
+	{
+		"StateName" : "South Carolina",
+		"CaseCountSum" : 6489,
+		"DeathCountSum" : 267
+	},
+	{
+		"StateName" : "South Dakota",
+		"CaseCountSum" : 2587,
+		"DeathCountSum" : 25
+	},
+	{
+		"StateName" : "Tennessee",
+		"CaseCountSum" : 12398,
+		"DeathCountSum" : 210
+	},
+	{
+		"StateName" : "Texas",
+		"CaseCountSum" : 31433,
+		"DeathCountSum" : 875
+	},
+	{
+		"StateName" : "Utah",
+		"CaseCountSum" : 4981,
+		"DeathCountSum" : 49
+	},
+	{
+		"StateName" : "Vermont",
+		"CaseCountSum" : 886,
+		"DeathCountSum" : 50
+	},
+	{
+		"StateName" : "Virgin Islands",
+		"CaseCountSum" : 66,
+		"DeathCountSum" : 4
+	},
+	{
+		"StateName" : "Virginia",
+		"CaseCountSum" : 17731,
+		"DeathCountSum" : 616
+	},
+	{
+		"StateName" : "Washington",
+		"CaseCountSum" : 15254,
+		"DeathCountSum" : 833
+	},
+	{
+		"StateName" : "West Virginia",
+		"CaseCountSum" : 1185,
+		"DeathCountSum" : 50
+	},
+	{
+		"StateName" : "Wisconsin",
+		"CaseCountSum" : 7660,
+		"DeathCountSum" : 334
+	},
+	{
+		"StateName" : "Wyoming",
+		"CaseCountSum" : 579,
+		"DeathCountSum" : 7
+	}
+]

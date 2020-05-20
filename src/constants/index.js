@@ -6,6 +6,7 @@ const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   SIGN_UP: '/sign-up',
+  STATE: '/state/:statename',
 };
 
 export {

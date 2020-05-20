@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Fade } from 'react-reveal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -39,25 +40,27 @@ const SignUp = (props) => {
   };
 
   return (
-    <div id="sign-in-container">
-      <ToastContainer />
-      <h3>Sign Up</h3>
-      <div>
-        <p>Username:</p>
-        <input value={username} onChange={e => setUsername(e.target.value)} />
-        <p>Password:</p>
-        <input value={password} onChange={e => setPassword(e.target.value)} type="password" />
-        <p>Confirm Password:</p>
-        <input value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} type="password" />
-        <p>First Name:</p>
-        <input value={firstName} onChange={e => setFirstName(e.target.value)} />
-        <p>Last Name:</p>
-        <input value={lastName} onChange={e => setLastName(e.target.value)} />
-        <div className="button" onClick={signUp} role="button" tabIndex={0}>
-          Sign Up
+    <Fade>
+      <div id="sign-in-container">
+        <ToastContainer />
+        <h3>Sign Up</h3>
+        <div>
+          <p>Username:</p>
+          <input value={username} onChange={e => setUsername(e.target.value)} />
+          <p>Password:</p>
+          <input value={password} onChange={e => setPassword(e.target.value)} type="password" />
+          <p>Confirm Password:</p>
+          <input value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} type="password" />
+          <p>First Name:</p>
+          <input value={firstName} onChange={e => setFirstName(e.target.value)} />
+          <p>Last Name:</p>
+          <input value={lastName} onChange={e => setLastName(e.target.value)} />
+          <div className="button" onClick={signUp} role="button" tabIndex={0}>
+            Sign Up
+          </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

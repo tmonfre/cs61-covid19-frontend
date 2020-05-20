@@ -33,6 +33,7 @@ class App extends React.Component {
           <NavBar />
           <Switch>
             <Route exact path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.STATE} component={Home} />
             <Route path={ROUTES.LOGIN} component={SignIn} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
             <Route component={FallBack} />
