@@ -10,12 +10,19 @@ import {
   signIn,
   signOut,
 } from './user-actions';
+import {
+  ActionTypes as countryActionTypes,
+  getCountries,
+} from './count-actions';
 
 // combine all action types
 const ActionTypes = {};
 
 Object.keys(userActionTypes).forEach((key) => {
   ActionTypes[key] = userActionTypes[key];
+});
+Object.keys(countryActionTypes).forEach((key) => {
+  ActionTypes[key] = countryActionTypes[key];
 });
 
 // export all action types in one object, as well as each action
@@ -28,4 +35,5 @@ export {
   clearUserData,
   signIn,
   signOut,
+  getCountries,
 };
