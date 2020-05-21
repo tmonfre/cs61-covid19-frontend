@@ -14,6 +14,8 @@ import {
   ActionTypes as countActionTypes,
   getCountry,
   getState,
+  getCounties,
+  getStates,
 } from './count-actions';
 
 // combine all action types
@@ -38,4 +40,6 @@ export {
   signOut,
   getCountry,
   getState,
+  getCounties,
+  getStates,
 };
