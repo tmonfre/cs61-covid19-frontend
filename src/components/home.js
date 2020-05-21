@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import * as am4core from '@amcharts/amcharts4/core';
@@ -9,8 +10,10 @@ import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import State from './state';
 import CountryGraph from './countryGraph';
+import { getCounties } from '../state/actions';
 
 import '../styles/home.scss';
+
 
 am4core.useTheme(am4themesDataVis);
 am4core.useTheme(am4themesAnimated);
@@ -26,6 +29,22 @@ stateData.forEach((state) => {
 
 class Home extends React.Component {
   componentDidMount() {
+    this.props.getCounties();
+    console.log(this.props.state);
+
+    // console.log(stateData);
+    const stateData2 = [];
+    console.log(this.props.stateData);
+    Object.keys(this.props.stateData).forEach((state) => {
+      // console.log(state);
+      stateData2.push({
+        StateName: state,
+        CaseCountSum: this.props.stateData.caseCountSum,
+        DeathCountSum: this.props.stateData.deathCountSum,
+      });
+    });
+    // console.log(stateData2);
+
     // create map of US states and territories
     const map = am4core.create('chartdiv', am4maps.MapChart);
     map.geodata = am4geodataUSLow;
@@ -103,4 +122,18 @@ class Home extends React.Component {
   }
 }
 
-export default withRouter(Home);
+const mapStateToProps = (state) => {
+  return {
+    stateData: state.counts.cumStateData,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCounties: () => {
+      dispatch(getCounties());
+    },
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

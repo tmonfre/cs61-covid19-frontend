@@ -32,7 +32,33 @@ const getStateCount = (state) => {
   });
 };
 
+const getCountyData = () => {
+  return new Promise((resolve, reject) => {
+    axios.get(`${URL}/county/data/`)
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+
+const getStateData = () => {
+  return new Promise((resolve, reject) => {
+    axios.get(`${URL}/state/data/`)
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+
 export {
   getCountryCount,
   getStateCount,
+  getCountyData,
+  getStateData,
 };
