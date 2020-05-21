@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOCAL_STORAGE_TOKEN_KEY, ROUTES, LOCAL_STORAGE_USERNAME_KEY } from './constants';
 
-import { getUser, getStates } from './state/actions';
+import { getUser, getStates, getCounties } from './state/actions';
 
 import Home from './components/home';
 import SignIn from './components/auth/sign-in';
@@ -26,6 +26,7 @@ class App extends React.Component {
     }
 
     this.props.getStates();
+    this.props.getCounties();
   }
 
   render() {
@@ -54,6 +55,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getStates: () => {
       dispatch(getStates());
+    },
+    getCounties: () => {
+      dispatch(getCounties());
     },
   };
 };
