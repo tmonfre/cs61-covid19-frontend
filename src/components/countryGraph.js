@@ -27,9 +27,6 @@ class CountryGraph extends React.Component {
     }
 
     render() {
-      console.log(this.props.state);
-      console.log(this.props.reduxStateName);
-
       if (this.props.type === 'state' && this.props.state !== this.props.reduxStateName) this.retrieveData();
       const d = {
         labels: [],
