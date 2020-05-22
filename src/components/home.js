@@ -9,7 +9,7 @@ import am4geodataUSLow from '@amcharts/amcharts4-geodata/usaTerritories2Low';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import State from './state';
-import CountryGraph from './countryGraph';
+import Graph from './graph';
 
 import '../styles/home.scss';
 
@@ -112,7 +112,7 @@ class Home extends React.Component {
       <Fade>
         <div id="home">
           <div id="chartdiv" />
-          <CountryGraph type="country" />
+          <Graph type="country" />
           <State statename={this.props.match.params.statename} />
         </div>
       </Fade>

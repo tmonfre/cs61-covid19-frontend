@@ -1,23 +1,30 @@
 #home {
     #chartdiv {
-        width: calc(100vw - 50px);
+        width: calc(100vw -50px);
         min-height: 500px;
         height: calc(100vh - 250px);
         margin-top: 30px;
     }
     #countrygraph {
-        width: calc(75vw - 50px);
+        width: calc(70vw - 50px);
         min-height: 500px;
-        height: calc(100vh - 250px);
+        height: calc(50vh - 250px);
+        display: inline-block;
         margin-top: 30px;
-    }
+        position: relative;
 
+
+    }
     #state {
-        margin-top: 50px;
 
         #statechartdiv {
-            margin-top: 35px;
             width: 250px;
+            display: inline-block;
+
+        }
+        #statecontainer {
+            width: calc(100vw -50px);
+
         }
     }
 }

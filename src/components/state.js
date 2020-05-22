@@ -7,7 +7,7 @@ import * as am4maps from '@amcharts/amcharts4/maps';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import getStateMapData from '../constants/state-map-objects';
-import CountryGraph from './countryGraph';
+import Graph from './graph';
 
 am4core.useTheme(am4themesDataVis);
 am4core.useTheme(am4themesAnimated);
@@ -18,6 +18,10 @@ class State extends React.Component {
 
     this.state = {
       shouldMountHeatMap: false,
+      stateToRender: this.props.statename,
+      countyToRender: '',
+      mapTypeToRender: 'state',
+      countyName: '',
     };
   }
 
@@ -45,6 +49,8 @@ class State extends React.Component {
         polygonSeries.useGeodata = true;
 
         this.setState({
+          stateToRender: nextProps.statename,
+          mapTypeToRender: 'state',
           shouldMountHeatMap: true,
         });
       } else {
@@ -103,7 +109,6 @@ class State extends React.Component {
 
     // set county click handler
     polygonTemplate.events.on('hit', this.handleCountyClick);
-
     this.setState({
       shouldMountHeatMap: false,
     });
@@ -111,7 +116,13 @@ class State extends React.Component {
 
   handleCountyClick = (ev) => {
     ev.target.series.chart.zoomToMapObject(ev.target, 5);
-    console.log(ev.target.dataItem.dataContext);
+    this.setState({
+      stateToRender: ev.target.dataItem.dataContext.StateName,
+      countyToRender: ev.target.dataItem.dataContext.CountyID,
+      mapTypeToRender: 'county',
+      countyName: ev.target.dataItem.dataContext.CountyName,
+    });
+    // console.log(JSON.stringify(ev.target.dataItem.dataContext));
   }
 
   render() {
@@ -126,8 +137,10 @@ class State extends React.Component {
     return (
       <div id="state">
         {this.props.statename ? <h2>{this.props.statename}</h2> : null}
-        <div id="statechartdiv" />
-        {this.props.statename ? <CountryGraph type="state" state={this.props.statename} /> : null}
+        <div id="statecontainer">
+          <div id="statechartdiv" />
+          {this.props.statename ? <Graph type={this.state.mapTypeToRender} state={this.state.stateToRender} county={this.state.countyToRender} countyName={this.state.countyName} /> : null}
+        </div>
       </div>
     );
   }
