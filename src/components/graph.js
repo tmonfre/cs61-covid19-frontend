@@ -38,8 +38,10 @@ class Graph extends React.Component {
       }
       data.forEach((day) => {
         d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
-        d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
-        d.datasets[1].data.push(parseInt(day.DeathCountSum, 10));
+        if (parseInt(day.CaseCountSum, 10) < 0) d.datasets[0].data.push(0);
+        else d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
+        if (parseInt(day.DeathCountSum, 10) < 0) d.datasets[1].data.push(0);
+        else d.datasets[1].data.push(parseInt(day.DeathCountSum, 10));
       });
     }
 
