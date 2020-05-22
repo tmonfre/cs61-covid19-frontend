@@ -137,8 +137,10 @@ class State extends React.Component {
     return (
       <div id="state">
         {this.props.statename ? <h2>{this.props.statename}</h2> : null}
-        <div id="statechartdiv" />
-        {this.props.statename ? <Graph type={this.state.mapTypeToRender} state={this.state.stateToRender} county={this.state.countyToRender} countyName={this.state.countyName} /> : null}
+        <div id="statecontainer">
+          <div id="statechartdiv" />
+          {this.props.statename ? <Graph type={this.state.mapTypeToRender} state={this.state.stateToRender} county={this.state.countyToRender} countyName={this.state.countyName} /> : null}
+        </div>
       </div>
     );
   }

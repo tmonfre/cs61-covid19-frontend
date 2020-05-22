@@ -74,12 +74,14 @@ class Graph extends React.Component {
       if (this.props.type === 'state') {
         titleToDisplay = this.props.state;
       } else if (this.props.type === 'county') {
-        titleToDisplay = this.props.countyName;
+        titleToDisplay = `${this.props.countyName} County`;
       }
       return (
         <div id="countrygraph">
           <Line
             data={d}
+            width="100"
+            height="50"
             options={{
               title: {
                 display: true,
