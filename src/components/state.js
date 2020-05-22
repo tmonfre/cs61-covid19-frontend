@@ -18,7 +18,6 @@ class State extends React.Component {
 
     this.state = {
       shouldMountHeatMap: false,
-      stateToRender: this.props.statename,
       countyToRender: '',
       mapTypeToRender: 'state',
       countyName: '',
@@ -49,7 +48,6 @@ class State extends React.Component {
         polygonSeries.useGeodata = true;
 
         this.setState({
-          stateToRender: nextProps.statename,
           mapTypeToRender: 'state',
           shouldMountHeatMap: true,
         });
@@ -87,7 +85,7 @@ class State extends React.Component {
     // set up heat legend
     const heatLegend = this.chart.createChild(am4maps.HeatLegend);
     heatLegend.series = this.polygonSeries;
-    heatLegend.align = 'right';
+    heatLegend.align = 'left';
     heatLegend.valign = 'bottom';
     heatLegend.width = am4core.percent(20);
     heatLegend.marginRight = am4core.percent(6);
@@ -117,7 +115,6 @@ class State extends React.Component {
   handleCountyClick = (ev) => {
     ev.target.series.chart.zoomToMapObject(ev.target, 5);
     this.setState({
-      stateToRender: ev.target.dataItem.dataContext.StateName,
       countyToRender: ev.target.dataItem.dataContext.CountyID,
       mapTypeToRender: 'county',
       countyName: ev.target.dataItem.dataContext.CountyName,
@@ -132,6 +129,8 @@ class State extends React.Component {
           this.renderChloropleth();
         }, 500);
       }
+    } else if (this.chart) {
+      this.chart.dispose();
     }
 
     return (
@@ -139,7 +138,19 @@ class State extends React.Component {
         {this.props.statename ? <h2>{this.props.statename}</h2> : null}
         <div id="statecontainer">
           <div id="statechartdiv" />
-          {this.props.statename ? <Graph type={this.state.mapTypeToRender} state={this.state.stateToRender} county={this.state.countyToRender} countyName={this.state.countyName} /> : null}
+          <div id="state-county-chart-container">
+            {this.props.statename
+              ? (
+                <Graph
+                  type={this.state.mapTypeToRender}
+                  state={this.props.statename}
+                  county={this.state.countyToRender}
+                  countyName={this.state.countyName}
+                  styleID="stategraph"
+                  chartID="statelinechartdiv"
+                />
+              ) : null}
+          </div>
         </div>
       </div>
     );
