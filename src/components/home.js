@@ -105,7 +105,7 @@ class Home extends React.Component {
     // ev.target.series.chart.zoomToMapObject(ev.target, 5);
     console.log(`onClick: ${ev.target.dataItem.dataContext.name}`);
     this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
-    // this.scrollToState();
+    this.scrollToState();
   }
 
   scrollToState = () => {
