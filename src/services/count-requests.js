@@ -18,11 +18,25 @@ const getCountryCount = () => {
   });
 };
 /**
- * gets all of the state data if we want that?
+ * gets all of the state data
  */
 const getStateCount = (state) => {
   return new Promise((resolve, reject) => {
     axios.get(`${URL}/states/${state}`)
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+/**
+ * gets all of the county data
+ */
+const getCountyCount = (countyId) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`${URL}/counties/${countyId}`)
       .then((response) => {
         resolve(response.data.response);
       })
@@ -61,4 +75,5 @@ export {
   getStateCount,
   getCountyData,
   getStateData,
+  getCountyCount,
 };

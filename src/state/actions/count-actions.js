@@ -1,18 +1,18 @@
-import * as countryRequest from '../../services/count-requests';
+import * as dataRequest from '../../services/count-requests';
 
 const ActionTypes = {
   GET_COUNTRY_DATA_OVER_TIME: 'GET_COUNTRY_DATA_OVER_TIME',
   GET_STATE_DATA_OVER_TIME: 'GET_STATE_DATA_OVER_TIME',
+  GET_COUNTY_DATA_OVER_TIME: 'GET_COUNTY_DATA_OVER_TIME',
   GET_ALL_COUNTY_DATA: 'GET_ALL_COUNTY_DATA',
   GET_ALL_STATE_DATA: 'GET_ALL_STATE_DATA',
-
   // flag to handle any errors that arise
   API_ERROR: 'API_ERROR',
 };
 
 const getCountry = () => {
   return (dispatch) => {
-    countryRequest.getCountryCount()
+    dataRequest.getCountryCount()
       .then((response) => {
         dispatch({ type: ActionTypes.GET_COUNTRY_DATA_OVER_TIME, payload: { data: response, stateName: '' } });
       })
@@ -23,9 +23,20 @@ const getCountry = () => {
 };
 const getState = (state) => {
   return (dispatch) => {
-    countryRequest.getStateCount(state)
+    dataRequest.getStateCount(state)
       .then((response) => {
         dispatch({ type: ActionTypes.GET_STATE_DATA_OVER_TIME, payload: { data: response, stateName: state } });
+      })
+      .catch((error) => {
+        dispatch({ type: ActionTypes.API_ERROR, payload: error });
+      });
+  };
+};
+const getCounty = (county) => {
+  return (dispatch) => {
+    dataRequest.getCountyCount(county)
+      .then((response) => {
+        dispatch({ type: ActionTypes.GET_COUNTY_DATA_OVER_TIME, payload: { data: response, countyID: county } });
       })
       .catch((error) => {
         dispatch({ type: ActionTypes.API_ERROR, payload: error });
@@ -35,7 +46,7 @@ const getState = (state) => {
 
 const getCounties = () => {
   return (dispatch) => {
-    countryRequest.getCountyData()
+    dataRequest.getCountyData()
       .then((response) => {
         dispatch({ type: ActionTypes.GET_ALL_COUNTY_DATA, payload: { data: response } });
       })
@@ -47,7 +58,7 @@ const getCounties = () => {
 
 const getStates = () => {
   return (dispatch) => {
-    countryRequest.getStateData()
+    dataRequest.getStateData()
       .then((response) => {
         dispatch({ type: ActionTypes.GET_ALL_STATE_DATA, payload: { data: response } });
       })
@@ -61,6 +72,7 @@ export {
   ActionTypes,
   getCountry,
   getState,
+  getCounty,
   getCounties,
   getStates,
 };

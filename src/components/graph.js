@@ -1,24 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-import { getCountry, getState } from '../state/actions';
+import { getCountry, getState, getCounty } from '../state/actions';
 
 
-class CountryGraph extends React.Component {
+class Graph extends React.Component {
   componentDidMount() {
     this.retrieveData();
   }
 
     retrieveData = () => {
+      console.log('retrieve data');
       if (this.props.type === 'country') {
         this.props.getCountry();
       } else if (this.props.type === 'state') {
         this.props.getState(this.props.state);
+      } else if (this.props.type === 'county') {
+        this.props.getCounty(this.props.county);
       }
     }
 
     handleData = (d) => {
-      const data = this.props.type === 'country' ? this.props.countryData : this.props.stateData;
+      let data = [];
+      switch (this.props.type) {
+        case 'county':
+          data = this.props.countyData;
+          break;
+        case 'state':
+          data = this.props.stateData;
+          break;
+        case 'country':
+          data = this.props.countryData;
+          break;
+        default:
+          data = [];
+          break;
+      }
       data.forEach((day) => {
         d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
         d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
@@ -28,6 +45,7 @@ class CountryGraph extends React.Component {
 
     render() {
       if (this.props.type === 'state' && this.props.state !== this.props.reduxStateName) this.retrieveData();
+      else if (this.props.type === 'county' && this.props.county !== this.props.reduxCountyID) this.retrieveData();
       const d = {
         labels: [],
         datasets: [
@@ -52,6 +70,12 @@ class CountryGraph extends React.Component {
         ],
       };
       this.handleData(d);
+      let titleToDisplay = 'US';
+      if (this.props.type === 'state') {
+        titleToDisplay = this.props.state;
+      } else if (this.props.type === 'county') {
+        titleToDisplay = this.props.countyName;
+      }
       return (
         <div id="countrygraph">
           <Line
@@ -59,7 +83,7 @@ class CountryGraph extends React.Component {
             options={{
               title: {
                 display: true,
-                text: `${this.props.state === undefined ? 'US' : this.props.state} Cases and Deaths over time`,
+                text: `${titleToDisplay} Cases and Deaths over time`,
                 fontSize: 20,
               },
               legend: {
@@ -77,7 +101,9 @@ const mapStateToProps = (state) => {
   return {
     countryData: state.counts.countryData,
     stateData: state.counts.stateData,
+    countyData: state.counts.countyData,
     reduxStateName: state.counts.stateName,
+    reduxCountyID: state.counts.countyID,
   };
 };
 
@@ -89,10 +115,13 @@ const mapDispatchToProps = (dispatch) => {
     getState: (state) => {
       dispatch(getState(state));
     },
+    getCounty: (countyID) => {
+      dispatch(getCounty(countyID));
+    },
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CountryGraph);
+)(Graph);
