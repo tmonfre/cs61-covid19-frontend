@@ -7,6 +7,7 @@ import {
   updateUser,
   deleteUser,
   clearUserData,
+  getAllUsers,
   signIn,
   signOut,
 } from './user-actions';
@@ -37,6 +38,7 @@ export {
   updateUser,
   deleteUser,
   clearUserData,
+  getAllUsers,
   signIn,
   signOut,
   getCountry,

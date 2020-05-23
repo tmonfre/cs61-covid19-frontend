@@ -8,7 +8,7 @@ import { getUser, getStates, getCounties } from './state/actions';
 import Home from './components/home';
 import SignIn from './components/auth/sign-in';
 import SignUp from './components/auth/sign-up';
-
+import Admin from './components/admin/admin';
 import NavBar from './components/navbar';
 
 const FallBack = () => {
@@ -30,7 +30,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.state);
     return (
       <Router>
         <div id="content">
@@ -40,6 +39,7 @@ class App extends React.Component {
             <Route path={ROUTES.STATE} component={Home} />
             <Route path={ROUTES.LOGIN} component={SignIn} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
+            <Route path={ROUTES.ADMIN} component={Admin} />
             <Route component={FallBack} />
           </Switch>
         </div>

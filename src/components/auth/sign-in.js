@@ -18,7 +18,17 @@ const SignIn = (props) => {
   };
 
   const onFailureCallback = (error) => {
-    toast.error(error);
+    if (error.message) {
+      toast.error(error.message);
+    } else if (error.msg) {
+      toast.error(error.msg);
+    } else if (error.error && error.error.message) {
+      toast.error(error.error.message);
+    } else if (error.error && error.error.msg) {
+      toast.error(error.error.message);
+    } else {
+      toast.error(JSON.stringify(error));
+    }
   };
 
   return (

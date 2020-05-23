@@ -29,10 +29,12 @@ class Graph extends React.Component {
       titleToDisplay = `${nextProps.countyName} County`;
     }
 
-    if (this.chart.titles.values.length === 0 || this.chart.titles.values[0].currentText !== `${titleToDisplay} Cases and Deaths Over Time`) {
+    titleToDisplay = `${titleToDisplay} Cases and Deaths Over Time`;
+
+    if (this.chart.titles.values.length === 0 || this.chart.titles.values[0].currentText !== titleToDisplay) {
       this.chart.titles.clear();
       const title = this.chart.titles.create();
-      title.text = `${titleToDisplay} Cases and Deaths Over Time`;
+      title.text = titleToDisplay;
       title.fontSize = 25;
       title.marginBottom = 30;
       title.align = 'left';
@@ -57,6 +59,8 @@ class Graph extends React.Component {
       data.forEach((obj) => {
         obj.Date = new Date(obj.Date);
         obj.Date.setHours(0, 0, 0, 0);
+        obj.CaseCountSum = parseInt(obj.CaseCountSum, 10) < 0 ? 0 : obj.CaseCountSum;
+        obj.DeathCountSum = parseInt(obj.DeathCountSum, 10) < 0 ? 0 : obj.DeathCountSum;
       });
 
       // save data to chart
@@ -105,41 +109,6 @@ class Graph extends React.Component {
     } else if (this.props.type === 'county') {
       this.props.getCounty(this.props.county);
     }
-  }
-
-  handleData = (d) => {
-    let data = [];
-
-    switch (this.props.type) {
-      case 'county':
-        data = this.props.countyData;
-        break;
-      case 'state':
-        data = this.props.stateData;
-        break;
-      case 'country':
-        data = this.props.countryData;
-        break;
-      default:
-        data = [];
-        break;
-    }
-
-    data.forEach((day) => {
-      d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
-
-      if (parseInt(day.CaseCountSum, 10) < 0) {
-        d.datasets[0].data.push(0);
-      } else {
-        d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
-      }
-
-      if (parseInt(day.DeathCountSum, 10) < 0) {
-        d.datasets[1].data.push(0);
-      } else {
-        d.datasets[1].data.push(parseInt(day.DeathCountSum, 10));
-      }
-    });
   }
 
   render() {

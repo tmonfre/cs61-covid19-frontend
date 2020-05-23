@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import { API_URL } from '../constants';
 
@@ -44,6 +45,10 @@ const getUser = (token, username) => {
  */
 const updateUser = (token, username, fields) => {
   return new Promise((resolve, reject) => {
+    if (fields.AdminUser) {
+      fields.AdminUser = Boolean(fields.AdminUser);
+    }
+
     axios.put(`${URL}/${username}`, fields, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         resolve(response.data.response);

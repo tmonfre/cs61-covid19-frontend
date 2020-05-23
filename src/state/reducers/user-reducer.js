@@ -3,6 +3,7 @@ import { ActionTypes } from '../actions';
 const initialState = {
   token: '',
   user: {},
+  allUsers: [],
 };
 
 const UserInfoReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ const UserInfoReducer = (state = initialState, action) => {
 
     case ActionTypes.CLEAR_USER_DATA:
       return { ...state, user: {}, token: '' };
+
+    case ActionTypes.SET_ALL_USERS:
+      return { ...state, allUsers: action.payload };
 
     default:
       return state;
