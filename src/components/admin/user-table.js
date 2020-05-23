@@ -37,6 +37,30 @@ class UserTable extends React.Component {
       this.props.createUser({ ...newUser, Password: 'password' }, false);
     };
 
+    _renderCreateIcon = () => {
+      if (this.state.editing) {
+        return null;
+      } else if (this.state.create) {
+        return (
+          <div id="icon-area" role="button" tabIndex={0} onClick={() => { this.setState({ create: false }); this.saveNewUser(); }}>
+            <SaveIcon />
+            <p>Save</p>
+          </div>
+        );
+      } else {
+        return (
+          <div id="icon-area"
+            role="button"
+            tabIndex={0}
+            onClick={() => { this.setState({ create: true }); this.rowRefs.push(React.createRef()); }}
+          >
+            <AddBoxIcon />
+            <p>Create</p>
+          </div>
+        );
+      }
+    }
+
     render() {
       if (this.props.allUsers.length === 0) {
         return null;
@@ -47,38 +71,26 @@ class UserTable extends React.Component {
       return (
         <div id="all-users-area">
           <div id="icon-button-container">
-            {!this.state.create ? (
+            {this._renderCreateIcon()}
+            {this.state.create ? null : (
               <div id="icon-area"
                 role="button"
                 tabIndex={0}
-                onClick={() => { this.setState({ create: true }); this.rowRefs.push(React.createRef()); }}
+                onClick={() => {
+                  if (this.state.editing) this.saveUserObjects();
+                  else {
+                    this.rowRefs.forEach((ref) => {
+                      ref.current.updateStateForEdit();
+                    });
+                  }
+
+                  this.setState({ editing: !this.state.editing });
+                }}
               >
-                <AddBoxIcon />
-                <p>Create</p>
-              </div>
-            ) : (
-              <div id="icon-area" role="button" tabIndex={0} onClick={() => { this.setState({ create: false }); this.saveNewUser(); }}>
-                <SaveIcon />
-                <p>Save</p>
+                {this.state.editing ? <SaveIcon /> : <EditIcon />}
+                <p>{this.state.editing ? 'Save' : 'Edit'}</p>
               </div>
             )}
-            <div id="icon-area"
-              role="button"
-              tabIndex={0}
-              onClick={() => {
-                if (this.state.editing) this.saveUserObjects();
-                else {
-                  this.rowRefs.forEach((ref) => {
-                    ref.current.updateStateForEdit();
-                  });
-                }
-
-                this.setState({ editing: !this.state.editing });
-              }}
-            >
-              {this.state.editing ? <SaveIcon /> : <EditIcon />}
-              <p>{this.state.editing ? 'Save' : 'Edit'}</p>
-            </div>
           </div>
 
           <table>

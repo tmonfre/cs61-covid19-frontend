@@ -18,6 +18,9 @@ import {
   getCounty,
   getCounties,
   getStates,
+  createCaseCount,
+  updateCaseCount,
+  deleteCaseCount,
 } from './count-actions';
 
 // combine all action types
@@ -46,4 +49,7 @@ export {
   getCounties,
   getStates,
   getCounty,
+  createCaseCount,
+  updateCaseCount,
+  deleteCaseCount,
 };
