@@ -25,6 +25,8 @@ class Home extends React.Component {
     this.state = {
       mountedGraph: false,
     };
+
+    this.stateRef = React.createRef();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -103,17 +105,24 @@ class Home extends React.Component {
     // ev.target.series.chart.zoomToMapObject(ev.target, 5);
     console.log(`onClick: ${ev.target.dataItem.dataContext.name}`);
     this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
+    this.scrollToState();
   }
 
+  scrollToState = () => {
+    window.scrollTo(0, this.stateRef.current.offsetTop);
+  }
 
   render() {
-    console.log(`in render: ${this.props.stateData}`);
     return (
       <Fade>
         <div id="home">
           <div id="chartdiv" />
-          <Graph type="country" />
-          <State statename={this.props.match.params.statename} />
+          <div id="graph-container">
+            <Graph type="country" styleID="countrygraph" chartID="linechartdiv" />
+          </div>
+          <div ref={this.stateRef}>
+            <State statename={this.props.match.params.statename} ref={this.stateRef} />
+          </div>
         </div>
       </Fade>
     );
