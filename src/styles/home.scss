@@ -48,4 +48,19 @@
             }
         }
     }
+
+    #toggle-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .toggle-button, .toggle-button-selected {
+        margin-right: 25px;
+        cursor: pointer;
+    }
+
+    .toggle-button-selected {
+        border-bottom-style: solid;
+        border-bottom-width: medium;
+    }
 }

@@ -57,6 +57,12 @@ class State extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.chart) {
+      this.chart.dispose();
+    }
+  }
+
   renderChloropleth = () => {
     const countyAbbreviations = {};
 
