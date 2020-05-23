@@ -27,6 +27,8 @@ class Home extends React.Component {
     this.state = {
       showMap: true,
     };
+
+    this.stateRef = React.createRef();
   }
 
   handleShowMap = () => {
@@ -35,6 +37,17 @@ class Home extends React.Component {
 
   handleShowChart = () => {
     this.setState({ showMap: false });
+  }
+
+  handleStateClick = (ev) => {
+    // ev.target.series.chart.zoomToMapObject(ev.target, 5);
+    console.log(`onClick: ${ev.target.dataItem.dataContext.name}`);
+    this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
+    this.scrollToState();
+  }
+
+  scrollToState = () => {
+    window.scrollTo(0, this.stateRef.current.offsetTop);
   }
 
   render() {
@@ -46,9 +59,20 @@ class Home extends React.Component {
           {
             this.state.showMap
               ? <Country />
-              : <Graph type="country" />
+              : (
+                <div id="graph-container">
+                  <Graph type="country" styleID="countrygraph" chartID="linechartdiv" />
+                </div>
+              )
           }
-          <State statename={this.props.match.params.statename} />
+          {/* <State statename={this.props.match.params.statename} /> */}
+          {/* <div id="chartdiv" />
+          <div id="graph-container">
+            <Graph type="country" styleID="countrygraph" chartID="linechartdiv" />
+          </div> */}
+          <div ref={this.stateRef}>
+            <State statename={this.props.match.params.statename} ref={this.stateRef} />
+          </div>
         </div>
       </Fade>
     );
