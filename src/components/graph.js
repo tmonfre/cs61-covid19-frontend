@@ -15,8 +15,8 @@ class Graph extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ((this.props.type === 'state' && this.props.state !== this.props.reduxStateName)
-    || (this.props.type === 'county' && this.props.county !== this.props.reduxCountyID)) {
+    if ((nextProps.type === 'state' && nextProps.state !== nextProps.reduxStateName)
+    || (nextProps.type === 'county' && nextProps.county !== nextProps.reduxCountyID)) {
       this.retrieveData();
     }
 
@@ -41,16 +41,23 @@ class Graph extends React.Component {
     let data = [];
     let changed = false;
 
-    if (this.props.type === 'country' && this.props.countryData.length !== nextProps.countryData.length) {
+    if (nextProps.type === 'country') {
       data = nextProps.countryData;
       changed = true;
-    } else if (this.props.type === 'state' && this.props.stateData.length !== nextProps.stateData.length) {
+    } else if (nextProps.type === 'state') {
       data = nextProps.stateData;
       changed = true;
-    } else if (this.props.type === 'county' && this.props.countyData.length !== nextProps.countyData.length) {
+    } else if (nextProps.type === 'county') {
       data = nextProps.countyData;
       changed = true;
     }
+    data.forEach((d) => {
+      if (d.CaseCountSum < 0) {
+        d.CaseCountSum = 0;
+      } else if (d.DeathCountSum < 0) {
+        d.CaseCountSum = 0;
+      }
+    });
 
     if (changed) {
       // set date objects
@@ -105,41 +112,6 @@ class Graph extends React.Component {
     } else if (this.props.type === 'county') {
       this.props.getCounty(this.props.county);
     }
-  }
-
-  handleData = (d) => {
-    let data = [];
-
-    switch (this.props.type) {
-      case 'county':
-        data = this.props.countyData;
-        break;
-      case 'state':
-        data = this.props.stateData;
-        break;
-      case 'country':
-        data = this.props.countryData;
-        break;
-      default:
-        data = [];
-        break;
-    }
-
-    data.forEach((day) => {
-      d.labels.push(JSON.stringify(new Date(day.Date).toDateString()));
-
-      if (parseInt(day.CaseCountSum, 10) < 0) {
-        d.datasets[0].data.push(0);
-      } else {
-        d.datasets[0].data.push(parseInt(day.CaseCountSum, 10));
-      }
-
-      if (parseInt(day.DeathCountSum, 10) < 0) {
-        d.datasets[1].data.push(0);
-      } else {
-        d.datasets[1].data.push(parseInt(day.DeathCountSum, 10));
-      }
-    });
   }
 
   render() {

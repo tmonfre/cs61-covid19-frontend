@@ -125,7 +125,6 @@ class State extends React.Component {
       mapTypeToRender: 'county',
       countyName: ev.target.dataItem.dataContext.CountyName,
     });
-    // console.log(JSON.stringify(ev.target.dataItem.dataContext));
   }
 
   render() {
