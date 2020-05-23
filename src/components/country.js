@@ -114,6 +114,11 @@ class Country extends React.Component {
     // ev.target.series.chart.zoomToMapObject(ev.target, 5);
     console.log(`onClick: ${ev.target.dataItem.dataContext.name}`);
     this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
+    this.scrollToState();
+  }
+
+  scrollToState = () => {
+    window.scrollTo(0, this.props.stateRef.current.offsetTop);
   }
 
   render() {

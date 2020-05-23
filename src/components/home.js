@@ -18,8 +18,6 @@ import '../styles/home.scss';
 am4core.useTheme(am4themesDataVis);
 am4core.useTheme(am4themesAnimated);
 
-// const stateAbbreviations = require('../data/state-abbreviations.json');
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -43,33 +41,33 @@ class Home extends React.Component {
     // ev.target.series.chart.zoomToMapObject(ev.target, 5);
     console.log(`onClick: ${ev.target.dataItem.dataContext.name}`);
     this.props.history.push(`/state/${ev.target.dataItem.dataContext.name}`);
-    this.scrollToState();
-  }
-
-  scrollToState = () => {
-    window.scrollTo(0, this.stateRef.current.offsetTop);
   }
 
   render() {
     return (
       <Fade>
         <div id="home">
-          <button onClick={this.handleShowMap}>Show Map</button>
-          <button onClick={this.handleShowChart}>Show Chart</button>
+          <div id="toggle-row">
+            <h3
+              className={this.state.showMap ? 'toggle-button-selected' : 'toggle-button'}
+              onClick={() => this.setState({ showMap: true })}
+            >Show U.S. Map
+            </h3>
+            <h3
+              className={this.state.showMap ? 'toggle-button' : 'toggle-button-selected'}
+              onClick={() => this.setState({ showMap: false })}
+            >Show Graph of U.S. Cases
+            </h3>
+          </div>
           {
             this.state.showMap
-              ? <Country />
+              ? <Country stateRef={this.stateRef} />
               : (
                 <div id="graph-container">
                   <Graph type="country" styleID="countrygraph" chartID="linechartdiv" />
                 </div>
               )
           }
-          {/* <State statename={this.props.match.params.statename} /> */}
-          {/* <div id="chartdiv" />
-          <div id="graph-container">
-            <Graph type="country" styleID="countrygraph" chartID="linechartdiv" />
-          </div> */}
           <div ref={this.stateRef}>
             <State statename={this.props.match.params.statename} ref={this.stateRef} />
           </div>
