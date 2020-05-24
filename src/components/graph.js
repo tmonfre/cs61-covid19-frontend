@@ -29,10 +29,12 @@ class Graph extends React.Component {
       titleToDisplay = `${nextProps.countyName} County`;
     }
 
-    if (this.chart.titles.values.length === 0 || this.chart.titles.values[0].currentText !== `${titleToDisplay} Cases and Deaths Over Time`) {
+    titleToDisplay = `${titleToDisplay} Cases and Deaths Over Time`;
+
+    if (this.chart.titles.values.length === 0 || this.chart.titles.values[0].currentText !== titleToDisplay) {
       this.chart.titles.clear();
       const title = this.chart.titles.create();
-      title.text = `${titleToDisplay} Cases and Deaths Over Time`;
+      title.text = titleToDisplay;
       title.fontSize = 25;
       title.marginBottom = 30;
       title.align = 'left';
@@ -64,6 +66,8 @@ class Graph extends React.Component {
       data.forEach((obj) => {
         obj.Date = new Date(obj.Date);
         obj.Date.setHours(0, 0, 0, 0);
+        obj.CaseCountSum = parseInt(obj.CaseCountSum, 10) < 0 ? 0 : obj.CaseCountSum;
+        obj.DeathCountSum = parseInt(obj.DeathCountSum, 10) < 0 ? 0 : obj.DeathCountSum;
       });
 
       // save data to chart

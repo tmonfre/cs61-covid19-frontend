@@ -7,6 +7,7 @@ import {
   updateUser,
   deleteUser,
   clearUserData,
+  getAllUsers,
   signIn,
   signOut,
 } from './user-actions';
@@ -17,6 +18,9 @@ import {
   getCounty,
   getCounties,
   getStates,
+  createCaseCount,
+  updateCaseCount,
+  deleteCaseCount,
 } from './count-actions';
 
 // combine all action types
@@ -37,6 +41,7 @@ export {
   updateUser,
   deleteUser,
   clearUserData,
+  getAllUsers,
   signIn,
   signOut,
   getCountry,
@@ -44,4 +49,7 @@ export {
   getCounties,
   getStates,
   getCounty,
+  createCaseCount,
+  updateCaseCount,
+  deleteCaseCount,
 };

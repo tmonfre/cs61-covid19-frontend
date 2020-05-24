@@ -70,10 +70,49 @@ const getStateData = () => {
   });
 };
 
+const createCaseCount = (token, countyID, date, fields) => {
+  return new Promise((resolve, reject) => {
+    axios.post(`${URL}/set/${countyID}/${date}`, fields, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+
+const updateCaseCount = (token, countyID, date, fields) => {
+  return new Promise((resolve, reject) => {
+    axios.put(`${URL}/set/${countyID}/${date}`, fields, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+
+const deleteCaseCount = (token, countyID, date) => {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${URL}/set/${countyID}/${date}`, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        resolve(response.data.response);
+      })
+      .catch((error) => {
+        reject(error.response.data);
+      });
+  });
+};
+
 export {
   getCountryCount,
   getStateCount,
   getCountyData,
   getStateData,
   getCountyCount,
+  createCaseCount,
+  updateCaseCount,
+  deleteCaseCount,
 };

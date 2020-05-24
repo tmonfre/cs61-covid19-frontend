@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import { API_URL, LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USERNAME_KEY } from '../constants';
 
@@ -42,6 +43,10 @@ const signOut = () => {
  */
 const signUp = (fields) => {
   return new Promise((resolve, reject) => {
+    if (fields.AdminUser) {
+      fields.AdminUser = Boolean(fields.AdminUser);
+    }
+
     axios.post(`${URL}/sign-up`, fields, generateHeaders(fields.UserName, fields.Password))
       .then((response) => {
         resolve(response.data.response);

@@ -1,0 +1,123 @@
+#admin {
+    #users-header {
+        margin-top: 30px;
+        margin-bottom: -20px;
+    }
+
+    #select-header {
+        margin-top: 40px;
+    }
+
+    #icon-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        #icon-area {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            width: 100px;
+            border-radius: 5px;
+            border-style: solid;
+            border: 1px solid lightgrey;
+
+            p {
+                margin-left: 10px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    #icon-area:hover {
+        background-color: lightgrey;
+        border-color: lightgrey;
+        cursor: pointer;
+    }
+
+    #all-users-area {
+        margin-left: 0px !important;
+        margin-right: 10px;
+        margin-top: -40px;
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+
+          td {
+              font-family: "Avenir Medium";
+
+              input {
+                    width: calc(100% - 20px);
+                    padding: 5px;
+                    border-radius: 5px;
+                    border-style: solid;
+                    border: 1px solid lightgrey;
+              }
+          }
+
+          tr:nth-child(even) {
+            background-color: #dddddd;
+          }
+    }
+
+    #state-county-selector {
+        margin-top: 0px;
+
+        select {
+            width: 200px;
+            padding: 10px;
+            font-size: 14px;
+            margin-right: 15px;
+        }
+    }
+
+    #county-data-table-area {
+        margin-top: -30px;
+        margin-right: 10px;
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        td {
+            font-family: "Avenir Medium";
+
+            input {
+                width: calc(100% - 20px);
+                padding: 5px;
+                border-radius: 5px;
+                border-style: solid;
+                border: 1px solid lightgrey;
+            }
+        }
+
+        #trash:hover {
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    }
+}

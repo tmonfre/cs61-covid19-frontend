@@ -14,6 +14,14 @@ const NavBar = (props) => {
       <div id="auth-container">
         <h3>{Object.keys(props.user).length > 0 && props.user.FirstName ? `Welcome ${props.user.FirstName}!` : 'Welcome!'}</h3>
 
+        {props.user.AdminUser ? (
+          <NavLink to={ROUTES.ADMIN}>
+            <div id="nav-header-button">
+              <p>Admin Portal</p>
+            </div>
+          </NavLink>
+        ) : null }
+
         {Object.keys(props.user).length > 0 ? (
           <div id="nav-header-button" onClick={props.signOut} role="button" tabIndex={0}>
             <p>Sign Out</p>
