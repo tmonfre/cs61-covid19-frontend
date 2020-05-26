@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Fade } from 'react-reveal';
 import { getAllUsers } from '../../state/actions';
 import UserTable from './user-table';
 import CountyDataTable from './county-data-table';
@@ -39,13 +40,15 @@ class Admin extends React.Component {
     const countyNames = this.state.selectedState ? this.props.cumCountyData.filter(obj => obj.StateName === this.state.selectedState) : [];
 
     return (
-      <div id="admin">
-        <h3 id="users-header">Edit Users</h3>
-        <UserTable />
-        <h3 id="select-header">Select State and County</h3>
-        <StateCountySelector stateNames={stateNames} countyNames={countyNames} setSelectedState={this.setSelectedState} setSelectedCounty={this.setSelectedCounty} />
-        <CountyDataTable stateName={this.state.selectedState} countyName={this.state.selectedCountyName} countyID={this.state.selectedCountyID} />
-      </div>
+      <Fade>
+        <div id="admin">
+          <h3 id="users-header">Edit Users</h3>
+          <UserTable />
+          <h3 id="select-header">Select State and County</h3>
+          <StateCountySelector stateNames={stateNames} countyNames={countyNames} setSelectedState={this.setSelectedState} setSelectedCounty={this.setSelectedCounty} />
+          <CountyDataTable stateName={this.state.selectedState} countyName={this.state.selectedCountyName} countyID={this.state.selectedCountyID} />
+        </div>
+      </Fade>
     );
   }
 }
