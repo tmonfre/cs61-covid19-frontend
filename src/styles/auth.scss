@@ -3,6 +3,22 @@
         margin-bottom: 20px;
     }
 
+    #signup-link {
+        font-family: "Avenir-Medium";
+        margin-top: -10px;
+        margin-bottom: 25px;
+        font-style: italic;
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            color: #6bc3e3;
+            font-family: "Avenir-Heavy";
+        }
+    }
+
     input {
         width: 200px;
         padding: 10px;
