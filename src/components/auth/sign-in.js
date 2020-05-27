@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Fade } from 'react-reveal';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/auth.scss';
 
 import { signIn } from '../../state/actions';
+import { ROUTES } from '../../constants';
 
 const SignIn = (props) => {
   const [username, setUsername] = useState('');
@@ -36,6 +37,7 @@ const SignIn = (props) => {
       <div id="sign-in-container">
         <ToastContainer />
         <h3>Sign In</h3>
+        <p id="signup-link">Don&apos;t have an account? Click <NavLink to={ROUTES.SIGN_UP}>here</NavLink> to sign up.</p>
         <div>
           <p>Username:</p>
           <input value={username} onChange={e => setUsername(e.target.value)} />
