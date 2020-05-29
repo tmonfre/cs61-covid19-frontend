@@ -10,6 +10,7 @@ import SignIn from './components/auth/sign-in';
 import SignUp from './components/auth/sign-up';
 import Admin from './components/admin/admin';
 import NavBar from './components/navbar';
+import requireAdmin from './components/require-admin';
 
 const FallBack = () => {
   return <div>URL not found</div>;
@@ -39,7 +40,7 @@ class App extends React.Component {
             <Route path={ROUTES.STATE} component={Home} />
             <Route path={ROUTES.LOGIN} component={SignIn} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route path={ROUTES.ADMIN} component={Admin} />
+            <Route path={ROUTES.ADMIN} component={requireAdmin(Admin)} />
             <Route component={FallBack} />
           </Switch>
         </div>
