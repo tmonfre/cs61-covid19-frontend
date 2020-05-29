@@ -1,7 +1,7 @@
 /* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
 import { connect } from 'react-redux';
-import { isEqual } from 'lodash';
+import { isEqual, pick } from 'lodash';
 import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -33,7 +33,8 @@ class CountyDataTable extends React.Component {
       const oldObj = this.props.countyData[i];
       const updatedObj = ref.current.getUpdatedObject();
 
-      if (!isEqual(oldObj, updatedObj)) {
+      // only update rows where a value changed
+      if (!isEqual(oldObj, pick(updatedObj, ['Date', 'CaseCountSum', 'DeathCountSum']))) {
         this.props.updateCaseCount(this.props.countyID, updatedObj.Date, {
           CaseCount: updatedObj.CaseCountSum,
           DeathCount: updatedObj.DeathCountSum,
