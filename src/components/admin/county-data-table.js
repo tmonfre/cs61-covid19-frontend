@@ -184,7 +184,7 @@ class CaseCountRow extends React.Component {
       } else {
         return (
           <tr>
-            <td>{this.props.count.Date}</td>
+            <td>{this.props.count.Date ? new Date(this.props.count.Date).toISOString().substring(0, 10) : ''}</td>
             <td>{this.props.count.CaseCountSum}</td>
             <td>{this.props.count.DeathCountSum}</td>
           </tr>

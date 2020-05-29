@@ -12,6 +12,7 @@ import am4themesDataVis from '@amcharts/amcharts4/themes/dataviz';
 import Country from './country';
 import State from './state';
 import Graph from './graph';
+import { getStates, getCounties } from '../state/actions';
 
 import '../styles/home.scss';
 
@@ -27,6 +28,11 @@ class Home extends React.Component {
     };
 
     this.stateRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.props.getStates();
+    this.props.getCounties();
   }
 
   handleShowMap = () => {
@@ -83,4 +89,15 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, null)(Home));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getStates: () => {
+      dispatch(getStates());
+    },
+    getCounties: () => {
+      dispatch(getCounties());
+    },
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
