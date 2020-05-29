@@ -190,7 +190,7 @@ class UserRow extends React.Component {
             <td>{this.props.user.UserName}</td>
             <td>{this.props.user.FirstName}</td>
             <td>{this.props.user.LastName}</td>
-            <td>{this.props.user.AccountCreated}</td>
+            <td>{this.props.user.AccountCreated ? this.props.user.AccountCreated.substring(0, 10) : ''}</td>
             <td>{Boolean(this.props.user.AdminUser).toString()}</td>
           </tr>
         );
